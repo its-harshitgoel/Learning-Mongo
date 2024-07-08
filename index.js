@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -6,8 +7,7 @@ app.use(express.json());
 
 mongoose
     .connect(
-        "mongodb+srv://itsharshitgoel:dYrfBDZEAccY7dW5@cluster0.u88tuxb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0n",
-        { useNewUrlParser: true, useUnifiedTopology: true }
+        process.env.MONGODB_URI,
     )
     .then(() => {
         console.log('Connected to database');
